@@ -5,6 +5,7 @@ function Table() {
   const { data } = useContext(MyContext);
   return (
     <table>
+      <img src="https://wallpapercave.com/dwp1x/wp3614448.jpg" alt="start-wars" className="bg-none" />
       <thead>
         <tr>
           <th>Name</th>
