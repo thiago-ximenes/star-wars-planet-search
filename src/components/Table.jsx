@@ -4,8 +4,8 @@ import MyContext from '../context/MyContext';
 function Table() {
   const tableHeaders = [
     'Name', 'Rotation Period', 'Orbital Period', 'Diameter', 'Climate',
-    'Gravity', 'Terrain', 'Surface Water', 'Population', 'Created',
-    'Edited', 'Films', 'url',
+    'Gravity', 'Terrain', 'Surface Water', 'Population', 'Films',
+    'Created', 'Edited', 'url',
   ];
   const { data } = useContext(MyContext);
   return (
@@ -14,40 +14,39 @@ function Table() {
       border-gray-700 border-5"
     >
       <thead
-        className="bg-gray-700 text-white border-2 border-red-300"
+        className="bg-gray-700 text-white border-2 border-red-300 p-2"
       >
         <tr>
           {tableHeaders.map((header) => (
             <th
+              className="px-4 border-x-2"
               key={ header }
-              className="border-x-2 border-5 p-3"
-            >{header}</th>
+            >
+              {header}
+            </th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {data.length > 0 && data.map((planet) => (
-          <tr key={ planet.name }>
-            <td>{planet.name}</td>
-            <td>{planet.rotation_period}</td>
-            <td>{planet.orbital_period}</td>
-            <td>{planet.diameter}</td>
-            <td>{planet.climate}</td>
-            <td>{planet.gravity}</td>
-            <td>{planet.terrain}</td>
-            <td>{planet.surface_water}</td>
-            <td>{planet.population}</td>
-            <td>{planet.created}</td>
-            <td>{planet.edited}</td>
-            <td>
-              {planet.films.map((film) => (
-                <span key={ film }>{film}</span>
+        {data.length > 0 && data.map((planet) => {
+          delete planet.residents;
+          return planet;
+        })
+          .map((planet, index) => (
+            <tr
+              className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }
+              key={ planet.name }
+            >
+              {Object.values(planet).map((value) => (
+                <td
+                  className="border-2 border-gray-700 p-2"
+                  key={ value }
+                >
+                  {value}
+                </td>
               ))}
-
-            </td>
-            <td>{planet.url}</td>
-          </tr>
-        ))}
+            </tr>
+          ))}
       </tbody>
     </table>
   );
