@@ -2,25 +2,27 @@ import React, { useContext } from 'react';
 import MyContext from '../context/MyContext';
 
 function Table() {
+  const tableHeaders = [
+    'Name', 'Rotation Period', 'Orbital Period', 'Diameter', 'Climate',
+    'Gravity', 'Terrain', 'Surface Water', 'Population', 'Created',
+    'Edited', 'Films', 'url',
+  ];
   const { data } = useContext(MyContext);
   return (
-    <table>
-      <img src="https://wallpapercave.com/dwp1x/wp3614448.jpg" alt="start-wars" className="bg-none" />
-      <thead>
+    <table
+      className="border-solid
+      border-gray-700 border-5"
+    >
+      <thead
+        className="bg-gray-700 text-white border-2 border-red-300"
+      >
         <tr>
-          <th>Name</th>
-          <th>Rotation Period</th>
-          <th>Orbital Period</th>
-          <th>Diameter</th>
-          <th>Climate</th>
-          <th>Gravity</th>
-          <th>Terrain</th>
-          <th>Surface Water</th>
-          <th>Population</th>
-          <th>Created</th>
-          <th>Edited</th>
-          <th>Films</th>
-          <th>URL</th>
+          {tableHeaders.map((header) => (
+            <th
+              key={ header }
+              className="border-x-2 border-5 p-3"
+            >{header}</th>
+          ))}
         </tr>
       </thead>
       <tbody>
