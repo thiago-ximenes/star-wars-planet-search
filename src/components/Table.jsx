@@ -7,7 +7,9 @@ function Table() {
     'Gravity', 'Terrain', 'Surface Water', 'Population', 'Films',
     'Created', 'Edited', 'url',
   ];
-  const { data } = useContext(MyContext);
+  const { data, filtered: {
+    filterByName: { name },
+  } } = useContext(MyContext);
   return (
     <table
       className="border-solid
@@ -32,6 +34,7 @@ function Table() {
           delete planet.residents;
           return planet;
         })
+          .filter((planet) => planet.name.toLowerCase().includes(name))
           .map((planet, index) => (
             <tr
               className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }

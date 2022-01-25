@@ -4,8 +4,13 @@ import MyContext from './MyContext';
 
 function MyProvider({ children }) {
   const [data, setData] = useState({});
+  const [filtered, setFilter] = useState({
+    filterByName: {
+      name: '',
+    },
+  });
   return (
-    <MyContext.Provider value={ { data, setData } }>
+    <MyContext.Provider value={ { data, setData, filtered, setFilter } }>
       {children}
     </MyContext.Provider>
   );
