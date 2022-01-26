@@ -9,7 +9,11 @@ function Table() {
   ];
   const { data, filtered: {
     filterByName: { name },
-  } } = useContext(MyContext);
+  },
+  filterByQuantity: {
+    column, operator, value,
+  },
+  } = useContext(MyContext);
   return (
     <table
       className="border-solid

@@ -1,13 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import MyContext from '../context/MyContext';
 import Select from './Select';
 
 function Form() {
   const { filtered: filterByName,
-    setFilter, setFilterByQuantity, filterByQuantity } = useContext(MyContext);
+    setFilter, setFilterByQuantity } = useContext(MyContext);
   const optionFilter = ['Population', 'Orbital Period', 'Diameter',
     'Rotation Period', 'Surface Water'];
   const optionOperator = ['maior que', 'menor que', 'igual a'];
+  const [filterQuantity, setFilterQuantity] = useState({
+    column: 'Population',
+    operator: 'maior que',
+    value: '',
+  });
+
   return (
     <form
       className="flex items-center justify-center"
@@ -28,20 +34,23 @@ function Form() {
       <Select
         options={ optionFilter }
         testid="column-filter"
-        onChange={ (e) => setFilterByQuantity({
+        onChange={ (e) => setFilterQuantity({
+          ...filterQuantity,
           column: e.target.value,
         }) }
       />
       <Select
         options={ optionOperator }
         testid="comparison-filter"
-        onChange={ (e) => setFilterByQuantity({
+        onChange={ (e) => setFilterQuantity({
+          ...filterQuantity,
           operator: e.target.value,
         }) }
       />
       <input
-        value={ filterByQuantity.value }
-        onChange={ ({ target: { value } }) => setFilterByQuantity({
+        value={ filterQuantity.value }
+        onChange={ ({ target: { value } }) => setFilterQuantity({
+          ...filterQuantity,
           value,
         }) }
         type="number"
@@ -56,6 +65,7 @@ function Form() {
         bg-sky-500/100 hover:bg-sky-700 text-white rounded"
         data-testid="button-filter"
         type="button"
+        onClick={ () => setFilterByQuantity(filterQuantity) }
       >
         <div
           className="flex items-center justify-center"
