@@ -10,8 +10,8 @@ function MyProvider({ children }) {
     },
   });
   const [filterByQuantity, setFilterByQuantity] = useState({
-    column: 'population',
-    operator: 'maior que',
+    column: '',
+    operator: '',
     value: 0,
   });
 
