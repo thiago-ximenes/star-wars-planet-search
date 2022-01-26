@@ -5,13 +5,13 @@ import Select from './Select';
 function Form() {
   const { filtered: filterByName,
     setFilter, setFilterByQuantity } = useContext(MyContext);
-  const optionFilter = ['Population', 'Orbital Period', 'Diameter',
-    'Rotation Period', 'Surface Water'];
+  const optionFilter = ['population', 'orbital_period', 'diameter',
+    'rotation_period', 'surface_water'];
   const optionOperator = ['maior que', 'menor que', 'igual a'];
   const [filterQuantity, setFilterQuantity] = useState({
-    column: 'Population',
+    column: 'population',
     operator: 'maior que',
-    value: '',
+    value: 0,
   });
 
   return (
@@ -36,7 +36,7 @@ function Form() {
         testid="column-filter"
         onChange={ (e) => setFilterQuantity({
           ...filterQuantity,
-          column: e.target.value,
+          column: e.target.value.toLowerCase().replace(' ', '_'),
         }) }
       />
       <Select

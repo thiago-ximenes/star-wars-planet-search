@@ -39,6 +39,15 @@ function Table() {
           return planet;
         })
           .filter((planet) => planet.name.toLowerCase().includes(name))
+          .filter((planet) => {
+            if (operator === 'maior que') {
+              return Number(planet[column]) > value;
+            }
+            if (operator === 'menor que') {
+              return Number(planet[column]) < value;
+            }
+            return planet[column] === value;
+          })
           .map((planet, index) => (
             <tr
               className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }
