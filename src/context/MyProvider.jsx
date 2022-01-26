@@ -9,8 +9,17 @@ function MyProvider({ children }) {
       name: '',
     },
   });
+  const [filterByQuantity, setFilterByQuantity] = useState({
+    column: 'population',
+    operator: 'maior que',
+    value: '',
+  });
+
   return (
-    <MyContext.Provider value={ { data, setData, filtered, setFilter } }>
+    <MyContext.Provider
+      value={ {
+        data, setData, filtered, setFilter, filterByQuantity, setFilterByQuantity } }
+    >
       {children}
     </MyContext.Provider>
   );
