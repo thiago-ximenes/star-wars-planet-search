@@ -53,12 +53,12 @@ function Table() {
               className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }
               key={ planet.name }
             >
-              {Object.values(planet).map((value) => (
+              {Object.values(planet).map((objValue) => (
                 <td
                   className="border-2 border-gray-700 p-2"
-                  key={ value }
+                  key={ objValue }
                 >
-                  {value}
+                  {objValue}
                 </td>
               ))}
             </tr>
