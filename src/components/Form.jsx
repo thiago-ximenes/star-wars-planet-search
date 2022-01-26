@@ -19,8 +19,8 @@ function Form() {
       className="flex items-center justify-center"
     >
       <input
-        className="w-full m-2 p-2 border-2 border-gray-600
-        placeholder-opacity-75 placeholder:italic"
+        className="w-full m-2 p-2 border-2
+        placeholder-opacity-75 placeholder:italic rounded"
         value={ filterByName.name }
         placeholder="Filter by name"
         onChange={ (e) => setFilter({
@@ -56,7 +56,7 @@ function Form() {
         type="number"
         data-testid="value-filter"
         className="w-fit m-2 p-2 border-2 border-gray-600
-        placeholder-opacity-75 placeholder:italic"
+        placeholder-opacity-75 placeholder:italic rounded"
         placeholder="Value"
       />
       <button

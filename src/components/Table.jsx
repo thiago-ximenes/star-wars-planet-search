@@ -17,15 +17,19 @@ function Table() {
   return (
     <table
       className="border-solid
-      border-gray-700 border-5"
+      border-gray-700 border-5 m-2"
     >
       <thead
-        className="bg-gray-700 text-white border-2 border-red-300 p-2"
+        className="bg-gray-700 text-white border-2 border-black p-2"
       >
         <tr>
-          {tableHeaders.map((header) => (
+          {tableHeaders.map((header, index) => (
             <th
-              className="px-4 border-x-2"
+              className={
+                ` border px-4 py-2
+                ${index === 0 && 'border-r-2 border-white'}
+                ${index === tableHeaders.length - 1 && 'border-l-2 border-white'}}`
+              }
               key={ header }
             >
               {header}

@@ -5,7 +5,7 @@ function Select({ options, testid, onChange }) {
   return (
     <select
       data-testid={ testid }
-      className="w-fit m-0.5 p-2 border-2 border-gray-600"
+      className="w-fit m-0.5 p-2 border-2 border-gray-600 rounded"
       onChange={ onChange }
     >
       {options.map((option) => (
