@@ -4,7 +4,7 @@ function Header() {
   return (
     <header className="relative h-64 m-8 overflow-hidden rounded-lg bg-indigo-500">
       <div className="relative z-30 w-5/7 px-6 py-8 text-white md:py-10 md:w-1/2">
-        <h1 className="text-6xl">Star Wars Planets</h1>
+        <h1 className="text-7xl italic font-['Stardos_Stencil']">Star Wars Planets</h1>
         <span />
       </div>
       <div className="absolute top-0 right-0 flex w-full h-full">

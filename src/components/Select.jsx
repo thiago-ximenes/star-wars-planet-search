@@ -6,7 +6,8 @@ function Select({ options, testid, onChange }) {
     <select
       defaultValue={ options[0] }
       data-testid={ testid }
-      className="w-fit m-0.5 p-2 border-2 border-gray-600 rounded"
+      className="w-fit m-0.5 p-1.5 border-2 border-gray-600
+      rounded text-center text-lg font-['Stardos_Stencil']"
       onChange={ onChange }
     >
       {options.map((option) => (
