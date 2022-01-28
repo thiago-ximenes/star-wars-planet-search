@@ -12,7 +12,7 @@ function FormOrdering() {
   const [sortParameter, setSortParameterState] = useState('population');
 
   return (
-    <form>
+    <form className="flex w-full">
       <Select
         options={ orderBy }
         testid="column-sort"
