@@ -10,9 +10,13 @@ function MyProvider({ children }) {
     },
   });
   const [filterByQuantity, setFilterByQuantity] = useState({
-    column: '',
-    operator: '',
-    value: 0,
+    filterByNumeric: [
+      {
+        column: '',
+        operator: '',
+        value: 0,
+      },
+    ],
   });
 
   return (

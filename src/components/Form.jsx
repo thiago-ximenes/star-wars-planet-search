@@ -4,15 +4,38 @@ import Select from './Select';
 
 function Form() {
   const { filtered: filterByName,
-    setFilter, setFilterByQuantity } = useContext(MyContext);
-  const optionFilter = ['population', 'orbital_period', 'diameter',
-    'rotation_period', 'surface_water'];
+    setFilter, filterByQuantity, setFilterByQuantity } = useContext(MyContext);
+  const [optionFilter, setOptionFilter] = useState(
+    ['population', 'orbital_period', 'diameter',
+      'rotation_period', 'surface_water'],
+  );
   const optionOperator = ['maior que', 'menor que', 'igual a'];
   const [filterQuantity, setFilterQuantity] = useState({
     column: 'population',
     operator: 'maior que',
     value: 0,
   });
+
+  function handleClick() {
+    if (filterByQuantity.filterByNumeric[0].column !== '') {
+      setFilterByQuantity({
+        filterByNumeric: [...filterByQuantity.filterByNumeric, filterQuantity],
+      });
+    } else {
+      setFilterByQuantity({
+        filterByNumeric: [filterQuantity],
+      });
+    }
+    const newOptionFilter = optionFilter.filter(
+      (option) => option !== filterQuantity.column,
+    );
+    setOptionFilter(newOptionFilter);
+    setFilterQuantity({
+      column: newOptionFilter[0],
+      operator: 'maior que',
+      value: 0,
+    });
+  }
 
   return (
     <form
@@ -65,7 +88,7 @@ function Form() {
         bg-sky-500/100 hover:bg-sky-700 text-white rounded"
         data-testid="button-filter"
         type="button"
-        onClick={ () => setFilterByQuantity(filterQuantity) }
+        onClick={ handleClick }
       >
         <div
           className="flex items-center justify-center"

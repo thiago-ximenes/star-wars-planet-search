@@ -11,9 +11,28 @@ function Table() {
     filterByName: { name },
   },
   filterByQuantity: {
-    column, operator, value,
+    filterByNumeric,
   },
   } = useContext(MyContext);
+
+  function filteredData() {
+    let result = data.filter((planet) => planet.name.toLowerCase().includes(name));
+    filterByNumeric.forEach((filter) => {
+      const { column, operator, value } = filter;
+      result = result.filter((planet) => {
+        if (operator === 'maior que') {
+          return Number(planet[column]) > value;
+        } if (operator === 'menor que') {
+          return Number(planet[column]) < value;
+        } if (operator === 'igual a') {
+          return Number(planet[column]) === value;
+        }
+        return planet;
+      });
+    });
+    return result;
+  }
+
   return (
     <table
       className="border-solid
@@ -38,38 +57,21 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        {data.length > 0 && data.map((planet) => {
-          delete planet.residents;
-          return planet;
-        })
-          .filter((planet) => planet.name.toLowerCase().includes(name))
-          .filter((planet) => {
-            if (column !== '') {
-              if (operator === 'maior que') {
-                return Number(planet[column]) > value;
-              }
-              if (operator === 'menor que') {
-                return Number(planet[column]) < value;
-              }
-              return planet[column] === value;
-            }
-            return planet;
-          })
-          .map((planet, index) => (
-            <tr
-              className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }
-              key={ planet.name }
-            >
-              {Object.values(planet).map((objValue) => (
-                <td
-                  className="border-2 border-gray-700 p-2"
-                  key={ objValue }
-                >
-                  {objValue}
-                </td>
-              ))}
-            </tr>
-          ))}
+        {data.length > 0 && filteredData().map((planet, index) => (
+          <tr
+            className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }
+            key={ planet.name }
+          >
+            {Object.values(planet).map((objValue) => (
+              <td
+                className="border-2 border-gray-700 p-2"
+                key={ objValue }
+              >
+                {objValue}
+              </td>
+            ))}
+          </tr>
+        ))}
       </tbody>
     </table>
   );
