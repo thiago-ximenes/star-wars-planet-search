@@ -4,6 +4,7 @@ import Form from '../components/Form';
 import MyContext from '../context/MyContext';
 import fetchPlanets from '../services/fetchPlanets';
 import Header from '../components/Header';
+import BarOfFiltrates from '../components/BarOfFiltrates';
 
 function Index() {
   const { setData } = useContext(MyContext);
@@ -18,6 +19,7 @@ function Index() {
     >
       <Header />
       <Form />
+      <BarOfFiltrates />
       <Table />
     </div>
   );

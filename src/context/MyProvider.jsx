@@ -18,11 +18,23 @@ function MyProvider({ children }) {
       },
     ],
   });
+  const [optionFilter, setOptionFilter] = useState(
+    ['population', 'orbital_period', 'diameter',
+      'rotation_period', 'surface_water'],
+  );
 
   return (
     <MyContext.Provider
       value={ {
-        data, setData, filtered, setFilter, filterByQuantity, setFilterByQuantity } }
+        data,
+        setData,
+        filtered,
+        setFilter,
+        filterByQuantity,
+        setFilterByQuantity,
+        optionFilter,
+        setOptionFilter,
+      } }
     >
       {children}
     </MyContext.Provider>
