@@ -13,7 +13,31 @@ function Table() {
   filterByQuantity: {
     filterByNumeric,
   },
+  orderBy,
+  sortParameter,
   } = useContext(MyContext);
+
+  function orderBySort(array) {
+    if (orderBy) {
+      if (orderBy === 'ASC') {
+        return array.sort((a, b) => a[sortParameter] - b[sortParameter]);
+      }
+      return array.sort((a, b) => b[sortParameter] - a[sortParameter]);
+    }
+    return array.sort((a, b) => {
+      const ONE = 1;
+      const MINUS_ONE = -1;
+      const fa = a.name;
+      const fb = b.name;
+      if (fa < fb) {
+        return MINUS_ONE;
+      }
+      if (fa > fb) {
+        return ONE;
+      }
+      return 0;
+    });
+  }
 
   function filteredData() {
     let result = data.map((planet) => {
@@ -34,6 +58,7 @@ function Table() {
         return planet;
       });
     });
+    result = orderBySort(result);
     return result;
   }
 
@@ -73,6 +98,7 @@ function Table() {
             >
               {Object.values(planet).map((objValue) => (
                 <td
+                  data-testid={ objValue === planet.name && 'planet-name' }
                   className="border-2 text-center
                   text-sm border-gray-700 p-2 whitespace-nowrap"
                   key={ objValue }

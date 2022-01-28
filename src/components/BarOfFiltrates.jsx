@@ -29,19 +29,28 @@ function BarOfFiltrates() {
 
   return (
     filterByNumeric.length > 0 && (
-      <div>
+      <div className="flex">
         { filterByNumeric[0].column !== '' && filterByNumeric.map((filter) => (
           <div key={ filter.column }>
             <div
-              className="flex"
+              className="flex m-3 bg-gray-300 w-fit rounded-lg p-2"
               data-testid="filter"
             >
               {filter.column}
               <button
+                className="pl-4"
                 type="button"
                 onClick={ () => handleClick(filter.column) }
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 tracking-wider
+                  rounded-lg bg-opacity-70
+                  hover:bg-red-300 transition duration-200 active:scale-110"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"

@@ -9,6 +9,7 @@ function MyProvider({ children }) {
       name: '',
     },
   });
+
   const [filterByQuantity, setFilterByQuantity] = useState({
     filterByNumeric: [
       {
@@ -18,10 +19,15 @@ function MyProvider({ children }) {
       },
     ],
   });
+
   const [optionFilter, setOptionFilter] = useState(
     ['population', 'orbital_period', 'diameter',
       'rotation_period', 'surface_water'],
   );
+
+  const [orderBy, setOrderBy] = useState(undefined);
+
+  const [sortParameter, setSortParameter] = useState('population');
 
   return (
     <MyContext.Provider
@@ -34,6 +40,10 @@ function MyProvider({ children }) {
         setFilterByQuantity,
         optionFilter,
         setOptionFilter,
+        orderBy,
+        setOrderBy,
+        sortParameter,
+        setSortParameter,
       } }
     >
       {children}
