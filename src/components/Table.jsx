@@ -16,16 +16,20 @@ function Table() {
   } = useContext(MyContext);
 
   function filteredData() {
-    let result = data.filter((planet) => planet.name.toLowerCase().includes(name));
+    let result = data.map((planet) => {
+      delete planet.residents;
+      return planet;
+    });
+    result = data.filter((planet) => planet.name.toLowerCase().includes(name));
     filterByNumeric.forEach((filter) => {
       const { column, operator, value } = filter;
       result = result.filter((planet) => {
         if (operator === 'maior que') {
-          return Number(planet[column]) > value;
+          return Number(planet[column]) > Number(value);
         } if (operator === 'menor que') {
-          return Number(planet[column]) < value;
+          return Number(planet[column]) < Number(value);
         } if (operator === 'igual a') {
-          return Number(planet[column]) === value;
+          return Number(planet[column]) === Number(value);
         }
         return planet;
       });
@@ -34,46 +38,48 @@ function Table() {
   }
 
   return (
-    <table
-      className="border-solid
-      border-gray-700 border-5 m-2"
-    >
-      <thead
-        className="bg-gray-700 text-white border-2 border-black p-2"
+    <div className="overflow-auto rounded shadow-lg m-2">
+      <table
+        className="border-solid
+        border-gray-700 border-5 m-2"
       >
-        <tr>
-          {tableHeaders.map((header, index) => (
-            <th
-              className={
-                ` border px-4 py-2
-                ${index === 0 && 'border-r-2 border-white'}
-                ${index === tableHeaders.length - 1 && 'border-l-2 border-white'}}`
-              }
-              key={ header }
-            >
-              {header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.length > 0 && filteredData().map((planet, index) => (
-          <tr
-            className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }
-            key={ planet.name }
-          >
-            {Object.values(planet).map((objValue) => (
-              <td
-                className="border-2 border-gray-700 p-2"
-                key={ objValue }
+        <thead
+          className="bg-gray-700 text-white border-2 border-black p-2"
+        >
+          <tr>
+            {tableHeaders.map((header, index) => (
+              <th
+                className={
+                  ` border px-4 py-2
+                  ${index === 0 && 'border-r-2 border-white'}
+                  ${index === tableHeaders.length - 1 && 'border-l-2 border-white'}}`
+                }
+                key={ header }
               >
-                {objValue}
-              </td>
+                {header}
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.length > 0 && filteredData().map((planet, index) => (
+            <tr
+              className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }
+              key={ planet.name }
+            >
+              {Object.values(planet).map((objValue) => (
+                <td
+                  className="border-2 border-gray-700 p-2"
+                  key={ objValue }
+                >
+                  {objValue}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
