@@ -16,7 +16,7 @@ function Index() {
 
   return (
     <div
-      className="h-screen"
+      className="h-screen max-w-screen-lg mx-auto"
     >
       <Header />
       <Form />

@@ -18,13 +18,13 @@ function RadioInput({ value, onChange, orderByState, testid }) {
       />
       <label
         htmlFor={ value }
-        className={ `
+        className="
         flex gap-4 p-3 bg-gray-300 rounded-md bg-opacity-90
         backdrop-blur-2xl text-lg text-black
         hover:bg-opacity-50
         peer-checked:text-black
         transition font-['Stardos_Stencil']
-        cursor-pointer` }
+        cursor-pointer"
       >
         { value === 'ASC' ? 'Ascending' : 'Descending' }
       </label>
