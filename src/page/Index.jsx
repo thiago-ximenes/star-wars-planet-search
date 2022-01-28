@@ -13,11 +13,13 @@ function Index() {
   }, [setData]);
 
   return (
-    <>
+    <div
+      className="h-screen"
+    >
       <Header />
       <Form />
       <Table />
-    </>
+    </div>
   );
 }
 

@@ -38,19 +38,21 @@ function Table() {
   }
 
   return (
-    <div className="overflow-auto rounded shadow-lg m-2">
+    <div className="overflow-auto rounded-md m-3 shadow-md">
       <table
-        className="border-solid
-        border-gray-700 border-5 m-2"
+        className=" w-full
+        border-gray-700 border-5"
       >
         <thead
-          className="bg-gray-700 text-white border-2 border-black p-2"
+          className="bg-gray-700 text-white border-2
+          border-black font-semibold
+          tracking-wide align-left"
         >
           <tr>
             {tableHeaders.map((header, index) => (
               <th
                 className={
-                  ` border px-4 py-2
+                  ` border p-3 text-left
                   ${index === 0 && 'border-r-2 border-white'}
                   ${index === tableHeaders.length - 1 && 'border-l-2 border-white'}}`
                 }
@@ -61,7 +63,9 @@ function Table() {
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody
+          className="divide-y-8 divide-gray-700"
+        >
           {data.length > 0 && filteredData().map((planet, index) => (
             <tr
               className={ `border-2 ${index % 2 === 1 && 'bg-gray-200'}` }
@@ -69,7 +73,8 @@ function Table() {
             >
               {Object.values(planet).map((objValue) => (
                 <td
-                  className="border-2 border-gray-700 p-2"
+                  className="border-2 text-center
+                  text-sm border-gray-700 p-2 whitespace-nowrap"
                   key={ objValue }
                 >
                   {objValue}
