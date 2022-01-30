@@ -35,5 +35,5 @@ It has 3 basics functionalities:
 1. Search by name
     - Simple start to write the name of planet to find it on table
     
-    ![Searching by name](/Search_By_Name.gif)
+    ![Searching by name](/search-by-name.gif)
 2. Order by ascending or descending:
