@@ -36,4 +36,10 @@ It has 3 basics functionalities:
     - Simple start to write the name of planet to find it on table
     
     ![Searching by name](/search-by-name.gif)
-2. Order by ascending or descending:
+2. Organize by category:
+    - Select the planet category to find by specific condition
+    ![Find by category](/filter-by-comparator.gif)
+
+3. Order by ascending or descending:
+    - Select if it will be show by ascending or descending order
+    ![Order by ascending or descending](/order-by-ascending-descending.gif)
