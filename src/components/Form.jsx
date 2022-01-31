@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import MyContext from '../context/MyContext';
 import Select from './Select';
 
 function Form() {
   const { filtered: filterByName,
     setFilter, filterByQuantity,
-    setFilterByQuantity, deletedItem,
+    setFilterByQuantity,
     optionFilter, setOptionFilter } = useContext(MyContext);
   const optionOperator = ['maior que', 'menor que', 'igual a'];
   const [filterQuantity, setFilterQuantity] = useState({
@@ -13,12 +13,6 @@ function Form() {
     operator: 'maior que',
     value: 0,
   });
-
-  useEffect(() => {
-    if (deletedItem !== null) {
-      // setOptionFilter([...optionFilter, deletedItem]);
-    }
-  }, [optionFilter, filterByQuantity.filterByNumeric, deletedItem]);
 
   function handleClick() {
     if (filterByQuantity.filterByNumeric[0].column !== '') {
