@@ -8,6 +8,11 @@ A simple application to search planet in Star Wars universe by name and quatitie
 - TailwindCSS
 - Git
 
+## In Production
+
+[Link to aplicattion running](https://star-wars-planet-search.herokuapp.com/)
+
+
 ## Intalling
 - npm
 ```
